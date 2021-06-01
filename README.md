@@ -15,7 +15,7 @@
 5. Retire IOUs: when the amount on a IOU becomes 0, you can retire it by clicking the `Retire` button.
 
 
-##TODO
+## TODO
 * add markups
 * exception handling
 * "Blame" feature
