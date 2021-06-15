@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       password : this.registerForm.value.password
     }
 
-    this.http.post<RegisterResponse>("http://localhost:8080/api/account/register", postBody).subscribe(
+    this.http.post<RegisterResponse>("api/account/register", postBody).subscribe(
       (response) => {
         if (response.success){
           this.router.navigate(["login"])

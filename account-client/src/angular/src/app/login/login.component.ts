@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
     formData.append("username", this.loginForm.value.username)
     formData.append("password", this.loginForm.value.password)
 
-  
-    this.http.post<LoginResponse>("http://localhost:8080/login", formData).subscribe(
+
+    this.http.post<LoginResponse>("login", formData).subscribe(
       (response) => {
         if (response.success){
           this.router.navigate(["activity"])

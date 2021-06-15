@@ -82,6 +82,11 @@ sourceSets {
         }
     }
 }
+
+configurations{
+    localDeps
+}
+
 //Module dependencis
 dependencies {
     // Corda dependencies.
@@ -101,6 +106,10 @@ dependencies {
     cordaCompile "org.apache.logging.log4j:log4j-slf4j-impl:${log4j_version}"
     cordaCompile "org.apache.logging.log4j:log4j-web:${log4j_version}"
     cordaCompile "org.slf4j:jul-to-slf4j:$slf4j_version"
+
+    localDeps "$confidential_id_release_group:ci-workflows:$confidential_id_release_version"
+    localDeps "$accounts_release_group:accounts-contracts:$accounts_release_version"
+    localDeps "$accounts_release_group:accounts-workflows:$accounts_release_version"
 }
 
 
@@ -153,4 +162,16 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
         }
         rpcUsers = [[ user: "user1", "password": "test", "permissions": ["ALL"]]]
     }
+}
+
+task publishCordapps (type: Copy, dependsOn: ['build']){
+    from layout.projectDirectory.dir("account-contracts/build/libs"),
+            layout.projectDirectory.dir("account-workflows/build/libs"),
+            configurations.localDeps
+    into layout.projectDirectory.dir("cordapps")
+}
+
+task publishClient (type: Copy, dependsOn: ['publishCordapps', 'account-client:build']){
+    from layout.projectDirectory.dir("account-client/build/libs")
+    into layout.projectDirectory.dir("webserver")
 }
