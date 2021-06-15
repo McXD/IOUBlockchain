@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     formData.append("password", this.loginForm.value.password)
 
 
-    this.http.post<LoginResponse>("login", formData).subscribe(
+    this.http.post<LoginResponse>("http://168.63.212.88:8080/login", formData).subscribe(
       (response) => {
         if (response.success){
           this.router.navigate(["activity"])
