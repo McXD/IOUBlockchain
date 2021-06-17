@@ -188,7 +188,7 @@ Example:
 
 **URL**
 
-`api/iou/{username}/pay
+`api/iou/{username}/pay`
 
 **Method**
 
@@ -225,7 +225,7 @@ Example:
 
 **URL**
 
-`api/iou/{username}/delete
+`api/iou/{username}/delete`
 
 **Method**
 
