@@ -195,6 +195,7 @@ Example:
 `POST`
 
 **Data Param**
+
 Request body is sent in json and expects these fields:
 
 * **uid**: the linearId of the IOU
@@ -232,6 +233,7 @@ Example:
 `POST`
 
 **Data Param**
+
 Request body is sent in json and expects these fields:
 
 * **uid**: the linearId of the IOU
